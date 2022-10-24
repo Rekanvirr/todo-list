@@ -1,30 +1,38 @@
 <template>
   <form @submit.prevent>
-    <div class="Notka">
-        <label>Tyutuł Notki</label>
-        <input type="text" v-model="NotkaT">
-        <label>Zawartość notki</label>
-        <textarea v-model="NotatkaT" placeholder="Twoje miejsce na notatke"></textarea>
+    <label>Todo:</label>
+  <input type="text" v-model="tempTodo">
+  <div class="submit">
+        <button @click="addTodo">Dodaj do listy do zrobienia</button>
     </div>
-    <div class="submit">
-        <button>Dodaj notke</button>
+  <div v-for="(todo, index) in todos" :key="index" class="pill">
+       <span @click="removeTodo(todo)">{{ index + 1 }}. {{ todo }} </span>
+       <br>
     </div>
+
   </form>
-  <div class="nota">
-    <h1> {{ NotkaT }} </h1>
-    <br>
-    <p> {{ NotatkaT }} </p>
-  </div>
 </template>
 
 <script>
 export default {
     data(){
         return {
-            NotkaT: '',
-            NotatkaT: '',
+            todos: [],
+            tempTodo: '',
         }
-    },
+    },methods: {
+      addTodo(e) {
+            if (this.tempTodo) {
+                    this.todos.push(this.tempTodo)
+                this.tempTodo = ''
+            }
+        },
+        removeTodo(todo) {
+            this.todos = this.todos.filter((item) =>  {
+                return todo != item
+            })
+        },
+    }
 }
 </script>
 
@@ -56,14 +64,14 @@ export default {
    color: #555;
 }
 .pill {
-  display: inline-block;
+  display: block;
   margin: 20px 10px 10px 10px;
   padding: 15px 15px;
   background: #eee;
   border-radius: 20px;
   font-size: 14px;
   letter-spacing: 1px;
- font-weight: bold;
+  font-weight: bold;
   color: black;
   cursor: pointer;
 }
