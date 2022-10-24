@@ -15,7 +15,7 @@ export default {
 <template>
   <h1>Kontakt do nas!</h1>
     <ul id="list">
-        <li v-for="value in Dane">
+        <li v-for="value in Dane" :key="value">
             {{ value }}
         </li>
     </ul>
@@ -23,14 +23,17 @@ export default {
 </template>
 
 <style>
-.v-list__tile__content{
-    justify-content: center!important;
-    flex-direction: row!important;
-    text-align: center!important;
-    align-items: center!important;
-}
-
-.v-list__tile__title, .v-list__tile__sub-title {
-    text-align: center!important;
+ul{
+  display: block;
+  margin: 20px 10px 10px 10px;
+  padding: 15px 15px;
+  background: #eee;
+  border-radius: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  list-style: none;
 }
 </style>

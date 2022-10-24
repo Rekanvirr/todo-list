@@ -38,7 +38,7 @@ export default {
 
 <style>
    form {
-    max-width: 420px;
+    max-width: 40px;
     margin: 30px auto;
     background: white;
     text-align: left;
